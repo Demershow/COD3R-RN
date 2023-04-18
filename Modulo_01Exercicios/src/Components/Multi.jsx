@@ -1,23 +1,25 @@
-import { View, Text } from 'react-native'
+import { Text } from 'react-native'
 import React from 'react'
+
+import style from './style'
 
 function Comp01() {
   return(
 
-    <Text>
+    <Text style={style.bigTxt}>
     comp01
   </Text>
     )
 }
 function Comp02() {
-  return (<Text>
+  return (<Text style={style.bigTxt}>
     comp02
   </Text>)
 }
 function Comp03() {
   return(
 
-    <Text>
+    <Text style={style.bigTxt}>
     comp03
   </Text>
     )
