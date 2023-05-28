@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { Component } from 'react'
+import React from 'react'
 import { Gravatar } from 'react-native-gravatar'
 
 export default props => {

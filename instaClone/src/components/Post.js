@@ -1,25 +1,41 @@
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native'
-import React, { Component } from 'react'
-import Author from './Author'
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {StyleSheet, View, Image, Dimensions} from 'react-native';
 
-export default class Post extends Component {
+import Author from './Author';
+import Comments from './Comments';
+import AddComment from './AddComment';
+
+class Post extends Component {
   render() {
+    const addComment = this.props.name ? (
+      <AddComment postId={this.props.id} />
+    ) : null;
     return (
       <View style={styles.container}>
-        <Image source={this.props.image} style={styles.image} />
-        <Author email="demersontorres520@gmail.com" nickname="Demerson"/>        
+        <Image source={{uri: this.props.image}} style={styles.image} />
+        <Author email={this.props.email} nickname={this.props.nickname} />
+        <Comments comments={this.props.comments} />
+        {addComment}
       </View>
-    )
+    );
   }
 }
 
+const mapStateToProps = ({user}) => {
+  return {
+    name: user.name,
+  };
+};
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   image: {
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').width * 3/4,
-    resizeMode: 'contain'
-  }
-})
+    height: (Dimensions.get('window').width * 3) / 4,
+    resizeMode: 'contain',
+  },
+});
+export default connect(mapStateToProps)(Post);
